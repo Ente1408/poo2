@@ -7,9 +7,11 @@ import java.util.List;
 import org.hibernate.query.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.stereotype.Repository;
 
 import com.ppooii.trabajo1.entities.persona;
 
+@Repository
 public interface PersonaRepository extends JpaRepository<persona, Serializable>, PagingAndSortingRepository <persona, Serializable> {
 
 	public abstract persona findById(int id);

@@ -3,20 +3,49 @@ package com.ppooii.trabajo1.entities;
 import java.io.Serializable;
 import java.sql.Date;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
 
+@Entity
+@Table(name = "persona",schema = "PPOOII")
 public class persona implements Serializable {
-	public int Id;
-	private int identificacion;
-	private String PrimerNombre;
-	private String SegundoNombre;
-	private String PrimerApellido;
-	private String SegundoApellido;
-	private String Email;
-	private Date FechaNacimiento;
-	private int Edad;
-	private String EdadClinica;
 	
-	public persona () {};
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
+	@Id
+	@Column(name = "id")
+	public int Id;
+	
+	@Column(name = "identificador")
+	private int identificacion;
+	
+	@Column(name = "pnombre")
+	private String PrimerNombre;
+	
+	@Column(name = "snombre")
+	private String SegundoNombre;
+	
+	@Column(name = "papellido")
+	private String PrimerApellido;
+	
+	@Column(name = "sapellido")
+	private String SegundoApellido;
+	
+	@Column(name = "email")
+	private String Email;
+	
+	@Column(name = "fechanacimiento")
+	private Date FechaNacimiento;
+	
+	@Column(name = "edad")
+	private int Edad;
+	
+	@Column(name = "edadclinica")
+	private String EdadClinica;
 	
 	// aqui no pongo id porque, si lo pongo ahi, es un dato que ellos tienen que poner, 
 	//y si el id es autoincrementable entonces ellos no pueden ponerlo al ingresar una persona, cieto?
@@ -33,44 +62,6 @@ public class persona implements Serializable {
 		this.FechaNacimiento = FechaNacimiento;
 		
 	}
-	
-	public persona (int identificacion, String PrimerNombre, String SegundoNombre,  int Edad, String PrimerApellido, String Email, Date FechaNacimiento) {
-		super();
-		this.identificacion = identificacion;
-		this.PrimerNombre = PrimerNombre;
-		this.SegundoNombre = SegundoNombre;
-		this.Edad = Edad;
-		this.PrimerApellido = PrimerApellido;
-		this.Email = Email;
-		this.FechaNacimiento = FechaNacimiento;
-		
-	}
-	
-	public persona (int identificacion, String PrimerNombre, int Edad, String PrimerApellido, String SegundoApellido, String Email, Date FechaNacimiento) {
-		super();
-		this.identificacion = identificacion;
-		this.PrimerNombre = PrimerNombre;
-		this.Edad = Edad;
-		this.PrimerApellido = PrimerApellido;
-		this.SegundoApellido = SegundoApellido;
-		this.Email = Email;
-		this.FechaNacimiento = FechaNacimiento;
-		
-	}
-	
-	public persona (int identificacion, String PrimerNombre, String SegundoNombre,  int Edad, String PrimerApellido, String SegundoApellido, String Email, Date FechaNacimiento) {
-		super();
-		this.identificacion = identificacion;
-		this.PrimerNombre = PrimerNombre;
-		this.SegundoNombre = SegundoNombre;
-		this.Edad = Edad;
-		this.PrimerApellido = PrimerApellido;
-		this.SegundoApellido = SegundoApellido;
-		this.Email = Email;
-		this.FechaNacimiento = FechaNacimiento;
-		
-	}
-
 	public int getId() {
 		return Id; //este debe tener getter y setter? o no?
 	}

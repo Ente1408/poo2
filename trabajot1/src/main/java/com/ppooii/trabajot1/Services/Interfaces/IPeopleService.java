@@ -3,12 +3,17 @@ package com.ppooii.trabajot1.Services.Interfaces;
 import java.awt.print.Pageable;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.ppooii.trabajo1.entities.persona;
 
-public interface PeopleService {
+@Service
+public interface IPeopleService {
 	
-	//los crud
-public boolean guardar(persona persona);
+	 @Autowired
+	//Metodos CRUD
+	public boolean guardar(persona persona);
 	
 	public boolean actualizar(persona persona);
 	
