@@ -13,10 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.ppooii.trabajo1.entities.persona;
-import com.ppooii.trabajo1.repository.PersonaRepository;
-//me acabo de enterar que algunos paquetes les puse trabajo1 y otros trabajot1, seguro por estar interrumpiendome
-//espero que no haya problema
+import com.ppooii.trabajot1.entities.persona;
+import com.ppooii.trabajot1.repository.PersonaRepository;
 
 @Service
 public class PeopleServicelpm implements IPeopleService {

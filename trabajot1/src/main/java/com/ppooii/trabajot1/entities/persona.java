@@ -1,4 +1,4 @@
-package com.ppooii.trabajo1.entities;
+package com.ppooii.trabajot1.entities;
 
 import java.io.Serializable;
 import java.sql.Date;

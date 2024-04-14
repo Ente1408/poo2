@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ppooii.trabajo1.entities.persona;
+import com.ppooii.trabajot1.entities.persona;
 
 @Service
 public interface IPeopleService {

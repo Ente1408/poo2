@@ -1,4 +1,4 @@
-package com.ppooii.trabajo1.repository;
+package com.ppooii.trabajot1.repository;
 
 import java.awt.print.Pageable;
 import java.io.Serializable;
@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
-import com.ppooii.trabajo1.entities.persona;
+import com.ppooii.trabajot1.entities.persona;
 
 @Repository
 public interface PersonaRepository extends JpaRepository<persona, Serializable>, PagingAndSortingRepository <persona, Serializable> {
