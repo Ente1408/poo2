@@ -7,24 +7,25 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Table;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 
 @Entity
-@Table(name = "persona",schema = "PPOOII")
-public class persona implements Serializable {
+@Table(name = "persona",schema = "ppooii")
+public class Persona implements Serializable {
 	
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	
 	@Id
-	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public int Id;
 	
 	@Column(name = "identificador")
 	private int identificacion;
 	
 	@Column(name = "pnombre")
-	private String PrimerNombre;
+	private String PNombre;
 	
 	@Column(name = "snombre")
 	private String SegundoNombre;
@@ -42,7 +43,7 @@ public class persona implements Serializable {
 	private Date FechaNacimiento;
 	
 	@Column(name = "edad")
-	private int Edad;
+	private int edad;
 	
 	@Column(name = "edadclinica")
 	private String EdadClinica;
@@ -52,14 +53,16 @@ public class persona implements Serializable {
 	
 	//lo de edad clinica, ya veremos
 	
-	public persona (int identificacion, String PrimerNombre, int Edad, String PrimerApellido, String Email, Date FechaNacimiento) {
+	public Persona (int identificacion, String PrimerNombre, int Edad, String PrimerApellido, String Email, Date FechaNacimiento) {
 		super();
 		this.identificacion = identificacion;
-		this.PrimerNombre = PrimerNombre;
-		this.Edad = Edad;
+		this.PNombre = PrimerNombre;
+		this.edad = Edad;
 		this.PrimerApellido = PrimerApellido;
 		this.Email = Email;
 		this.FechaNacimiento = FechaNacimiento;
+	}
+	public Persona() {
 		
 	}
 	public int getId() {
@@ -79,11 +82,11 @@ public class persona implements Serializable {
 	}
 
 	public String getPrimerNombre() {
-		return PrimerNombre;
+		return PNombre;
 	}
 
 	public void setPrimerNombre(String primerNombre) {
-		PrimerNombre = primerNombre;
+		PNombre = primerNombre;
 	}
 
 	public String getSegundoNombre() {
@@ -127,11 +130,11 @@ public class persona implements Serializable {
 	}
 
 	public int getEdad() {
-		return Edad;
+		return edad;
 	}
 
-	public void setEdad(int edad) {
-		Edad = edad;
+	public void setEdad(int edad1) {
+		edad = edad1;
 	}
 
 	public String getEdadClinica() {
@@ -142,10 +145,11 @@ public class persona implements Serializable {
 		EdadClinica = edadClinica;
 	}
 	
+	@Override
 	public String toString() {
 		return "Persona [id = "+this.Id+
-				", Primer Nombre = "+this.PrimerNombre+", Segundo Nombre = "+this.SegundoNombre+
-				", Edad = "+this.Edad+", Primer Apellido = "+this.PrimerApellido+", Segundo Apellido = "+this.SegundoApellido+
+				", Primer Nombre = "+this.PNombre+", Segundo Nombre = "+this.SegundoNombre+
+				", Edad = "+this.edad+", Primer Apellido = "+this.PrimerApellido+", Segundo Apellido = "+this.SegundoApellido+
 				", Email = "+this.Email+", Fecha Nacimiento = "+this.FechaNacimiento+", Edad Clinica = "+this.EdadClinica+"]";
 	}
 	
