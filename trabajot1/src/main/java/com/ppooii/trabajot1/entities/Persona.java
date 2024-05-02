@@ -1,13 +1,24 @@
 package com.ppooii.trabajot1.entities;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
+import java.util.Date;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.ppooii.trabajot1.Services.Interfaces.PersonaServicelmpl;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 
 
@@ -16,7 +27,7 @@ import jakarta.persistence.Table;
 public class Persona implements Serializable {
 	
 	
-	
+	private static Logger logger = LoggerFactory.getLogger(PersonaServicelmpl.class);
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public int Id;
@@ -151,6 +162,21 @@ public class Persona implements Serializable {
 				", Primer Nombre = "+this.PNombre+", Segundo Nombre = "+this.SegundoNombre+
 				", Edad = "+this.edad+", Primer Apellido = "+this.PrimerApellido+", Segundo Apellido = "+this.SegundoApellido+
 				", Email = "+this.Email+", Fecha Nacimiento = "+this.FechaNacimiento+", Edad Clinica = "+this.EdadClinica+"]";
+	}
+	
+	
+	@PrePersist
+	@PreUpdate
+	public void beforePersist() {
+		logger.info("Asignacion de edad y edad clinica");
+        Instant instant = getFechaNacimiento().toInstant();
+        LocalDate fechaNac = instant.atZone(ZoneId.systemDefault()).toLocalDate();
+
+		LocalDate ahora = LocalDate.now();
+		Period periodo = Period.between(fechaNac, ahora);
+		logger.info("Asignacion periodo"+periodo.getYears());
+		setEdad(periodo.getYears());
+		setEdadClinica(new String ("Tu edad es: "+periodo.getYears()+" años,"+periodo.getMonths()+" meses y "+periodo.getDays()+" días"));
 	}
 	
 	

@@ -36,6 +36,7 @@ public class PersonaServicelmpl implements IPersonaService{
 			}
 			
 		}catch(Exception e){
+			
 			logger.error("ERROR AGREGAR PERSONA: LA PERSONA NO SE HA GUARDADO");
 			return false;
 		}
