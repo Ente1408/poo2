@@ -17,6 +17,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -26,7 +27,7 @@ import jakarta.persistence.Table;
 @Table(name = "persona",schema = "ppooii")
 public class Persona implements Serializable {
 	
-	
+
 	private static Logger logger = LoggerFactory.getLogger(PersonaServicelmpl.class);
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -58,6 +59,9 @@ public class Persona implements Serializable {
 	
 	@Column(name = "edadclinica")
 	private String EdadClinica;
+	
+	@OneToOne(mappedBy = "person")
+	private Usuario user;
 	
 	// aqui no pongo id porque, si lo pongo ahi, es un dato que ellos tienen que poner, 
 	//y si el id es autoincrementable entonces ellos no pueden ponerlo al ingresar una persona, cieto?
@@ -166,7 +170,6 @@ public class Persona implements Serializable {
 	
 	
 	@PrePersist
-	@PreUpdate
 	public void beforePersist() {
 		logger.info("Asignacion de edad y edad clinica");
         Instant instant = getFechaNacimiento().toInstant();
@@ -174,7 +177,18 @@ public class Persona implements Serializable {
 
 		LocalDate ahora = LocalDate.now();
 		Period periodo = Period.between(fechaNac, ahora);
-		logger.info("Asignacion periodo"+periodo.getYears());
+		setEdad(periodo.getYears());
+		setEdadClinica(new String ("Tu edad es: "+periodo.getYears()+" años,"+periodo.getMonths()+" meses y "+periodo.getDays()+" días"));
+	}
+	
+	@PreUpdate
+	public void beforeupdate() {
+		logger.info("Asignacion de edad y edad clinica antes de actualizar");
+        Instant instant = getFechaNacimiento().toInstant();
+        LocalDate fechaNac = instant.atZone(ZoneId.systemDefault()).toLocalDate();
+
+		LocalDate ahora = LocalDate.now();
+		Period periodo = Period.between(fechaNac, ahora);
 		setEdad(periodo.getYears());
 		setEdadClinica(new String ("Tu edad es: "+periodo.getYears()+" años,"+periodo.getMonths()+" meses y "+periodo.getDays()+" días"));
 	}
