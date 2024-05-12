@@ -1,7 +1,8 @@
-package com.ppooii.trabajot1.Services.Interfaces;
+package com.ppooii.trabajot1.Services;
 
 import org.springframework.stereotype.Service;
 
+import com.ppooii.trabajot1.Services.Interfaces.GeneralService;
 import com.ppooii.trabajot1.entities.Usuario;
 
 @Service("GenService")

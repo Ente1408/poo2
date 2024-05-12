@@ -10,7 +10,7 @@ import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.ppooii.trabajot1.Services.Interfaces.PersonaServicelmpl;
+import com.ppooii.trabajot1.Services.PersonaServicelmpl;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

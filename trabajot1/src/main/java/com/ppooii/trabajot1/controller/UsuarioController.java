@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ppooii.trabajot1.Services.Interfaces.UsuarioService;
+import com.ppooii.trabajot1.Services.UsuarioService;
 import com.ppooii.trabajot1.entities.Usuario;
 
 @RestController

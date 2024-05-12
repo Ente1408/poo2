@@ -1,4 +1,4 @@
-package com.ppooii.trabajot1.Services.Interfaces;
+package com.ppooii.trabajot1.Services;
 
 import java.util.List;
 
@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.ppooii.trabajot1.Services.Interfaces.IPersonaService;
 import com.ppooii.trabajot1.entities.Persona;
 import com.ppooii.trabajot1.entities.Usuario;
 import com.ppooii.trabajot1.repository.PersonaRepository;
