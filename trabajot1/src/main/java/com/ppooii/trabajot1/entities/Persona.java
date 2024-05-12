@@ -1,13 +1,25 @@
 package com.ppooii.trabajot1.entities;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
+import java.util.Date;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.ppooii.trabajot1.Services.Interfaces.PersonaServicelmpl;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 
 
@@ -15,8 +27,8 @@ import jakarta.persistence.Table;
 @Table(name = "persona",schema = "ppooii")
 public class Persona implements Serializable {
 	
-	
-	
+
+	private static Logger logger = LoggerFactory.getLogger(PersonaServicelmpl.class);
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public int Id;
@@ -47,6 +59,9 @@ public class Persona implements Serializable {
 	
 	@Column(name = "edadclinica")
 	private String EdadClinica;
+	
+	@OneToOne(mappedBy = "person")
+	private Usuario user;
 	
 	// aqui no pongo id porque, si lo pongo ahi, es un dato que ellos tienen que poner, 
 	//y si el id es autoincrementable entonces ellos no pueden ponerlo al ingresar una persona, cieto?
@@ -151,6 +166,31 @@ public class Persona implements Serializable {
 				", Primer Nombre = "+this.PNombre+", Segundo Nombre = "+this.SegundoNombre+
 				", Edad = "+this.edad+", Primer Apellido = "+this.PrimerApellido+", Segundo Apellido = "+this.SegundoApellido+
 				", Email = "+this.Email+", Fecha Nacimiento = "+this.FechaNacimiento+", Edad Clinica = "+this.EdadClinica+"]";
+	}
+	
+	
+	@PrePersist
+	public void beforePersist() {
+		logger.info("Asignacion de edad y edad clinica");
+        Instant instant = getFechaNacimiento().toInstant();
+        LocalDate fechaNac = instant.atZone(ZoneId.systemDefault()).toLocalDate();
+
+		LocalDate ahora = LocalDate.now();
+		Period periodo = Period.between(fechaNac, ahora);
+		setEdad(periodo.getYears());
+		setEdadClinica(new String ("Tu edad es: "+periodo.getYears()+" años,"+periodo.getMonths()+" meses y "+periodo.getDays()+" días"));
+	}
+	
+	@PreUpdate
+	public void beforeupdate() {
+		logger.info("Asignacion de edad y edad clinica antes de actualizar");
+        Instant instant = getFechaNacimiento().toInstant();
+        LocalDate fechaNac = instant.atZone(ZoneId.systemDefault()).toLocalDate();
+
+		LocalDate ahora = LocalDate.now();
+		Period periodo = Period.between(fechaNac, ahora);
+		setEdad(periodo.getYears());
+		setEdadClinica(new String ("Tu edad es: "+periodo.getYears()+" años,"+periodo.getMonths()+" meses y "+periodo.getDays()+" días"));
 	}
 	
 	

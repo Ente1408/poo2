@@ -10,7 +10,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.ppooii.trabajot1.entities.Persona;
+import com.ppooii.trabajot1.entities.Usuario;
 import com.ppooii.trabajot1.repository.PersonaRepository;
+import com.ppooii.trabajot1.repository.UsuarioRepository;
 
 @Service("PersonaService")
 public class PersonaServicelmpl implements IPersonaService{
@@ -18,6 +20,10 @@ public class PersonaServicelmpl implements IPersonaService{
 	@Autowired
 	@Qualifier("IPersonaRepo")
 	private PersonaRepository IPersonaRepository;
+	
+	@Autowired
+	@Qualifier("IUsuarioRepo")
+	private UsuarioRepository IUsuarioRepository;
 	
 	//Log de Errores
 	private static Logger logger = LoggerFactory.getLogger(PersonaServicelmpl.class);
@@ -31,11 +37,16 @@ public class PersonaServicelmpl implements IPersonaService{
 				return false;
 			}else {
 				IPersonaRepository.save(persona);
+				Usuario user = new Usuario(
+						persona.getPrimerNombre()+persona.getPrimerApellido().charAt(0)+persona.getId(),"12345","12345",persona
+						);
+				IUsuarioRepository.save(user);
 				logger.info("AGREGAR PERSONA: PERSONA AGREGADA!");
 				return true;
 			}
 			
 		}catch(Exception e){
+			
 			logger.error("ERROR AGREGAR PERSONA: LA PERSONA NO SE HA GUARDADO");
 			return false;
 		}
