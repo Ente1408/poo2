@@ -3,6 +3,7 @@ package com.ppooii.trabajot1.entities;
 import java.io.Serializable;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,20 +12,15 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
-@Entity
+@Entity(name = "UserAndPersona")
 @Table(name = "usuarios",schema = "ppooii")
 public class Usuario  implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_usuario")
-	private int id;
-	
-	@Column(name = "login")
-	private String login;
-	
+	@EmbeddedId
+	private UsuarioPK id;	
+		
 	@Column(name = "pass")
 	private String password;
 	
@@ -35,36 +31,24 @@ public class Usuario  implements Serializable {
 	@JoinColumn(name="id_personas")
 	private Persona person;
 	
-	public Usuario() {
-		
-	}
+	public Usuario() {}
 	
-	
-	public Usuario(String login, String password, String apikey, Persona person) {
+	public Usuario(String login,String password) {
 		super();
-		this.login = login;
+		this.id.setLogin(login) ;
 		this.password = password;
-		this.apikey = apikey;
-		this.person = person;
 	}
 
 
-	public int getId() {
+	public UsuarioPK getId() {
 		return id;
 	}
 
 
-	public void setId(int iid) {
+	public void setId(UsuarioPK iid) {
 		id = iid;
 	}
 
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String ilogin) {
-		login = ilogin;
-	}
 
 	public String getPassword() {
 		return password;
