@@ -60,9 +60,6 @@ public class Persona implements Serializable {
 	@Column(name = "edadclinica")
 	private String EdadClinica;
 	
-	@OneToOne(mappedBy = "person")
-	private Usuario user;
-	
 	// aqui no pongo id porque, si lo pongo ahi, es un dato que ellos tienen que poner, 
 	//y si el id es autoincrementable entonces ellos no pueden ponerlo al ingresar una persona, cieto?
 	

@@ -5,11 +5,7 @@ import java.io.Serializable;
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+
 import jakarta.persistence.Table;
 
 @Entity(name = "UserAndPersona")
@@ -26,17 +22,14 @@ public class Usuario  implements Serializable {
 	
 	@Column(name = "apikey")
 	private String apikey;
-
-	@OneToOne
-	@JoinColumn(name="id_personas")
-	private Persona person;
 	
 	public Usuario() {}
 	
-	public Usuario(String login,String password) {
+	public Usuario(String login,String password,String apikey) {
 		super();
 		this.id.setLogin(login) ;
 		this.password = password;
+		this.apikey = apikey;
 	}
 
 
@@ -53,7 +46,7 @@ public class Usuario  implements Serializable {
 	public String getPassword() {
 		return password;
 	}
-
+	
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -65,6 +58,4 @@ public class Usuario  implements Serializable {
 	public void setApikey(String apikey) {
 		this.apikey = apikey;
 	}
-	
-	
 }

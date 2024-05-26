@@ -39,7 +39,7 @@ public class PersonaServicelmpl implements IPersonaService{
 			}else {
 				IPersonaRepository.save(persona);
 				Usuario user = new Usuario(
-						persona.getPrimerNombre()+persona.getPrimerApellido().charAt(0)+persona.getId(),"12345"
+						persona.getPrimerNombre()+persona.getPrimerApellido().charAt(0)+persona.getId(),"12345","12345"
 						);
 				IUsuarioRepository.save(user);
 				logger.info("AGREGAR PERSONA: PERSONA AGREGADA!");

@@ -14,7 +14,9 @@ public interface IUsuarioService {
 	
 	boolean eliminar(UsuarioPK usuario);
 	
-	List<Usuario> consultarUsuario (Pageable pageable);
+	List<Usuario> consultarUsuario(Pageable pageable);
 	
 	Usuario getUsuarioById(UsuarioPK id);
+
+	
 }

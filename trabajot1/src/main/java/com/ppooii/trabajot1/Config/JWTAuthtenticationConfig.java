@@ -1,8 +1,6 @@
 package com.ppooii.trabajot1.Config;
 
-import static com.ppooii.trabajot1.Config.Model.Constans.SUPER_SECRET_KEY;
-import static com.ppooii.trabajot1.Config.Model.Constans.TOKEN_EXPIRATION_TIME;
-import static com.ppooii.trabajot1.Config.Model.Constans.getSigningkey;
+import static com.ppooii.trabajot1.Config.Model.Constans.*;
 
 import java.util.Date;
 import java.util.List;
@@ -16,6 +14,8 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 @Configuration
 public class JWTAuthtenticationConfig {
+	
+		
 	public String getJWTToken(String username) {
 		List<GrantedAuthority> grantedAuthorities = AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER");
 		
@@ -30,7 +30,7 @@ public class JWTAuthtenticationConfig {
 				.setExpiration(new Date  (System.currentTimeMillis()+ TOKEN_EXPIRATION_TIME))
 				.signWith(getSigningkey(SUPER_SECRET_KEY),SignatureAlgorithm.HS512).compact();
 		
-		return "Bearer"+ token;
+		return "Bearer: "+ token;
 		
 	}
 }

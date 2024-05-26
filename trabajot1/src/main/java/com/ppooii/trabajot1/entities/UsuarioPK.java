@@ -13,7 +13,7 @@ public class UsuarioPK implements Serializable{
 	@Column(name ="login")
 	private String login;
 	
-	@Column(name= "persona")
+	@Column(name= "is_personas")
 	private int persona;
 	
 	public UsuarioPK() {}
