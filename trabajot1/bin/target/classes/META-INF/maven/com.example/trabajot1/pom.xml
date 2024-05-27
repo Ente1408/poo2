@@ -8,7 +8,7 @@
 		<version>3.2.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.ppooii</groupId>
+	<groupId>com.example</groupId>
 	<artifactId>trabajot1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>trabajot1</name>
@@ -40,15 +40,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
-		<!--Dependencias para hacer swagger documentation en spring boot-->
-	<dependency>
-	    <groupId>org.springdoc</groupId>
-	    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-	    <version>2.5.0</version>
-	</dependency>
-        <!--Fin Dependencias para hacer swagger documentation en spring boot-->
-        
 	</dependencies>
 
 	<build>
