@@ -25,6 +25,59 @@ public class Coordenadas implements Serializable {
 	@Column(name = "marca")
 	public String marca;
 	
-	@Column(name="")
+	@Column(name="longitud")
+	public double longitud;
+	@Column(name= "latitud")
+	public double latitud;
+	
+	public Coordenadas() {}
+	
+	public Coordenadas(int persona,String marca,double longitud,double latitud) {
+		this.persona = persona;
+		this.marca = marca;
+		this.longitud = longitud;
+		this.latitud = latitud;		
+	}
+	
+	public Coordenadas(int id,int persona,String marca,double longitud,double latitud) {
+		this.id = id;
+		this.persona = persona;
+		this.marca = marca;
+		this.longitud = longitud;
+		this.latitud = latitud;		
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public int getPersona() {
+		return persona;
+	}
+	public void setPersona(int persona) {
+		this.persona = persona;
+	}
+	public String getMarca() {
+		return marca;
+	}
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
+	public double getLongitud() {
+		return longitud;
+	}
+	public void setLongitud(double longitud) {
+		this.longitud = longitud;
+	}
+	public double getLatitud() {
+		return latitud;
+	}
+	public void setLatitud(double latitud) {
+		this.latitud = latitud;
+	}
+	
+	
+	
 
 }

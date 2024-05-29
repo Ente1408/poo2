@@ -60,6 +60,9 @@ public class Persona implements Serializable {
 	@Column(name = "edadclinica")
 	private String EdadClinica;
 	
+	@Column(name = "ubicacion")
+	private String Ubicacion;
+	
 	@OneToOne(mappedBy = "person")
 	private Usuario user;
 	
@@ -68,7 +71,7 @@ public class Persona implements Serializable {
 	
 	//lo de edad clinica, ya veremos
 	
-	public Persona (int identificacion, String PrimerNombre, int Edad, String PrimerApellido, String Email, Date FechaNacimiento) {
+	public Persona (int identificacion, String PrimerNombre, int Edad, String PrimerApellido, String Email, Date FechaNacimiento,String ubicacion) {
 		super();
 		this.identificacion = identificacion;
 		this.PNombre = PrimerNombre;
@@ -76,6 +79,7 @@ public class Persona implements Serializable {
 		this.PrimerApellido = PrimerApellido;
 		this.Email = Email;
 		this.FechaNacimiento = FechaNacimiento;
+		this.Ubicacion = ubicacion;
 	}
 	public Persona() {
 		
@@ -158,6 +162,13 @@ public class Persona implements Serializable {
 
 	public void setEdadClinica(String edadClinica) {
 		EdadClinica = edadClinica;
+	}
+	
+	public String getUbicacion() {
+		return Ubicacion;
+	}
+	public void setUbicacion(String ubicacion) {
+		Ubicacion = ubicacion;
 	}
 	
 	@Override
