@@ -19,11 +19,11 @@ import com.ppooii.trabajot1.entities.Usuario;
 import com.ppooii.trabajot1.entities.UsuarioPK;
 import com.ppooii.trabajot1.repository.UsuarioRepository;
 
-@Service("GenService")
+@Service("UsuarioService")
 public class UsuarioService implements IUsuarioService, UserDetailsService {
 
 	@Autowired
-	@Qualifier("IUsuarioRepo")
+	@Qualifier("IUsuarioRepository")
 	private UsuarioRepository IUsuarioRepository;
 	
 	private static Logger logger = LoggerFactory.getLogger(PersonaServicelmpl.class);
@@ -77,7 +77,7 @@ public class UsuarioService implements IUsuarioService, UserDetailsService {
 				return true;
 			}
 			
-			Usuario usuario = IUsuarioRepository.getUserAndPersona(id.getLogin(), id.getPersona());
+			Usuario usuario = IUsuarioRepository.getUsuarioAndPersona(id.getLogin(), id.getPersona());
 			IUsuarioRepository.delete(usuario);
 			return true;
 			
@@ -92,14 +92,14 @@ public class UsuarioService implements IUsuarioService, UserDetailsService {
 	}
 	@Override
 	public Usuario getUsuarioById(UsuarioPK id) {
-		return IUsuarioRepository.getUserAndPersona(id.getLogin(), id.getPersona());
+		return IUsuarioRepository.getUsuarioAndPersona(id.getLogin(), id.getPersona());
 	}
 
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		System.out.print("buscar el usuario con el repositorio y si no existe lanzar una exception");
-		Usuario appUser = IUsuarioRepository.findByUserName(username);
+		Usuario appUser = IUsuarioRepository.findByUsername(username);
 		
 		List grantList = new ArrayList();
 		System.out.print("Cre el objeto para UserDetails que va a ir en sesion y retornarla");
