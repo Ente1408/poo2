@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ppooii.trabajot1.Services.Interfaces.UsuarioService;
@@ -17,14 +18,14 @@ import com.ppooii.trabajot1.entities.Usuario;
 public class UsuarioController {
 
 	@Autowired
-	@Qualifier("GenService")
+	@Qualifier("UsuarioService")
 	UsuarioService usuario; 
 	
 	
 	//METODO PUT PARA CAMBIO DE CONTRASEÑA
 	@PutMapping("/usuario/change/password")
-	public boolean editarPersona(@RequestBody @Validated Usuario user){
-		return false;
+	public boolean changePassword(@RequestBody @Validated Usuario user, @RequestParam @Validated String NewPassword){
+		return usuario.changePassword(user, NewPassword);
 	}
 	
 	@GetMapping("/login")

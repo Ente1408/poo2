@@ -1,6 +1,7 @@
 package com.ppooii.trabajot1.Services.Interfaces;
 
 import java.util.List;
+import java.util.Random;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,9 +38,15 @@ public class PersonaServicelmpl implements IPersonaService{
 				return false;
 			}else {
 				IPersonaRepository.save(persona);
+				String caracteres = "qQwWeErRtTyYuUiIoOpPaAsSdDfFgGhHjJkKlLzZxXcCvVbBnNmM0123456789";
+				Random random = new Random();
+				StringBuilder resultado = new StringBuilder();
+				for(int i = 0; i <= 10; i++) {
+					int indice = random.nextInt(caracteres.length());
+					resultado.append(caracteres.charAt(indice));
+				}
 				Usuario user = new Usuario(
-						persona.getPrimerNombre()+persona.getPrimerApellido().charAt(0)+persona.getId(),"12345","12345",persona
-						);
+						persona.getPrimerNombre()+persona.getPrimerApellido().charAt(0)+persona.getId(),resultado.toString(),"12345",persona);
 				IUsuarioRepository.save(user);
 				logger.info("AGREGAR PERSONA: PERSONA AGREGADA!");
 				return true;

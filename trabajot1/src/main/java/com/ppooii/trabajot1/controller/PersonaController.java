@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ppooii.trabajot1.Services.Interfaces.PersonaServicelmpl;
+import com.ppooii.trabajot1.Services.Interfaces.UsuarioService;
 import com.ppooii.trabajot1.entities.Persona;
+import com.ppooii.trabajot1.entities.Usuario;
 
 @RestController
 @RequestMapping("/api")
@@ -26,6 +28,10 @@ public class PersonaController {
 	@Autowired
 	@Qualifier("PersonaService")
 	PersonaServicelmpl PeopleService; 
+	
+	@Autowired
+	@Qualifier("UsuarioService")
+	UsuarioService GenService;
 	//======INYECCION DEL SERVICE==========
 	
 	
@@ -52,6 +58,7 @@ public class PersonaController {
 	public List<Persona> listadoPersona(Pageable pageable){
 		return PeopleService.consultarPersona(pageable);
 	}
+	
 	
 	//=========METODOS HTTP DE BUSQUEDA ==========
 	

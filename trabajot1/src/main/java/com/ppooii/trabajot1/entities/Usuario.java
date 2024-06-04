@@ -1,6 +1,7 @@
 package com.ppooii.trabajot1.entities;
 
 import java.io.Serializable;
+import java.util.Random;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -40,11 +41,11 @@ public class Usuario  implements Serializable {
 	}
 	
 	
-	public Usuario(String login, String password, String apikey, Persona person) {
+	public Usuario(String login, String ApiKey, String password, Persona person) {
 		super();
 		this.login = login;
 		this.password = password;
-		this.apikey = apikey;
+		this.apikey = ApiKey;
 		this.person = person;
 	}
 

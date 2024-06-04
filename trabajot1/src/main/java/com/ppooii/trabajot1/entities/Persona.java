@@ -33,25 +33,25 @@ public class Persona implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public int Id;
 	
-	@Column(name = "identificador")
+	@Column(name = "identificacion") 
 	private int identificacion;
 	
-	@Column(name = "pnombre")
+	@Column(name = "primer_nombre")
 	private String PNombre;
 	
-	@Column(name = "snombre")
+	@Column(name = "segundo_nombre")
 	private String SegundoNombre;
 	
-	@Column(name = "papellido")
+	@Column(name = "primer_apellido")
 	private String PrimerApellido;
 	
-	@Column(name = "sapellido")
+	@Column(name = "segundo_apellido")
 	private String SegundoApellido;
 	
 	@Column(name = "email")
 	private String Email;
 	
-	@Column(name = "fechanacimiento")
+	@Column(name = "fecha_nacimiento")
 	private Date FechaNacimiento;
 	
 	@Column(name = "edad")
