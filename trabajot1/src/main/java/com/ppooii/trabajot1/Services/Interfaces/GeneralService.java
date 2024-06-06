@@ -7,6 +7,8 @@ public interface GeneralService {
 	public boolean changePassword(Usuario User, String NewPassword);
 	
 	public boolean getPassAndKey(Usuario User);
+
+	boolean change(String pass, String login);
 	
 	
 }
