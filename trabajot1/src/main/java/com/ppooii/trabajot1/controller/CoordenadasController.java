@@ -14,7 +14,7 @@ import com.ppooii.trabajot1.Services.CoordenasServicelmpl;
 import com.ppooii.trabajot1.entities.Coordenadas;
 
 @RestController
-@RequestMapping("/coordenada")
+@RequestMapping("/coordenadas")
 public class CoordenadasController {
 	//INYECCION DEL SERVICE
 	@Autowired
@@ -23,8 +23,8 @@ public class CoordenadasController {
 	
 	//METODOS HTTP
 	//METODO GET
-	@CrossOrigin(origins="http://localhost")
-	@GetMapping("/coorde")
+	@CrossOrigin(origins="http://127.0.0.1:5500/")
+	@GetMapping("/coordenadas")
 	public List<Coordenadas> consultarAllCoordenadas(Pageable pageable){
 		return coordenadaService.consultarAllCoordenadas(pageable);
 	}
