@@ -22,5 +22,7 @@ public interface PersonaRepository extends JpaRepository<Persona, Serializable>,
 	public abstract List<Persona> findByEdad(int edad);
 	
 	public abstract Page<Persona> findAll(Pageable pageable);
+	
+	
 }
 

@@ -48,6 +48,12 @@
 	    <version>2.5.0</version>
 	</dependency>
         <!--Fin Dependencias para hacer swagger documentation en spring boot-->
+      		<!--Dependencias para hacer tarea programada en spring boot-->
+	<dependency>
+	    <groupId>com.fasterxml.jackson.core</groupId>
+	    <artifactId>jackson-databind</artifactId>
+	</dependency>
+        <!--Fin Dependencias para hacer tarea programada en spring boot-->
         
 	</dependencies>
 
