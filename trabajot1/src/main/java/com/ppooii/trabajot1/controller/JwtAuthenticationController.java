@@ -26,8 +26,8 @@ public class JwtAuthenticationController {
 	private UserDetailsService jwtInMemoryUserDetailsService;
 	
 	@RequestMapping(
-			value= "/authenticate",
-			method = RequestMethod.POST,
+			value	 = "/authenticate",
+			method   = RequestMethod.POST,
 			consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE
 	)

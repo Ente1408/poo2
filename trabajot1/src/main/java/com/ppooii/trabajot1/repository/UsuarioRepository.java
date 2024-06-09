@@ -13,10 +13,10 @@ import com.ppooii.trabajot1.entities.UsuarioPK;
 @Repository("IUsuarioRepository")
 public interface UsuarioRepository extends JpaRepository<Usuario, UsuarioPK>, CrudRepository<Usuario, UsuarioPK> {
 
-	@Query("SELECT usr FROM usuarios as usr WHERE usr.id.login = :login AND usr.id.id_personas = :persona")
+	@Query("SELECT usr FROM UsrANDPer usr WHERE usr.id.login = :login AND usr.id.persona = :persona")
 	public abstract Usuario getUsuarioAndPersona(@Param("login") String login,@Param("persona") int persona);
 	
-	@Query("SELECT usr FROM usuarios as usr WHERE usr.id.login = :login")
+	@Query("SELECT usr FROM UsrANDPer usr WHERE usr.id.login = :login")
 	public abstract Usuario findByUsername(@Param("login") String login);
 	
 }

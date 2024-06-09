@@ -8,14 +8,14 @@ import jakarta.persistence.Entity;
 
 import jakarta.persistence.Table;
 
-@Entity
+@Entity(name="UsrANDPer")
 @Table(name = "usuarios",schema = "ppooii")
 public class Usuario  implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	@EmbeddedId
-	private UsuarioPK id_usuarios;	
+	private UsuarioPK id;	
 		
 	@Column(name = "pass")
 	private String password;
@@ -27,19 +27,19 @@ public class Usuario  implements Serializable {
 	
 	public Usuario(String login,String password,String apikey) {
 		super();
-		this.id_usuarios.setLogin(login) ;
+		this.id.setLogin(login) ;
 		this.password = password;
 		this.apikey = apikey;
 	}
 
 
 	public UsuarioPK getId() {
-		return id_usuarios;
+		return id;
 	}
 
 
 	public void setId(UsuarioPK iid) {
-		id_usuarios = iid;
+		id = iid;
 	}
 
 

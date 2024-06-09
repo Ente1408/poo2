@@ -23,7 +23,7 @@ public class PersonaServicelmpl implements IPersonaService{
 	private PersonaRepository IPersonaRepository;
 	
 	@Autowired
-	@Qualifier("IUsuarioRepo")
+	@Qualifier("IUsuarioRepository")
 	private UsuarioRepository IUsuarioRepository;
 	
 	//Log de Errores
